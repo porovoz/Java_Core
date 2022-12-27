@@ -1,12 +1,25 @@
 package course02.lesson05.transport;
 
+import java.util.Date;
+
 public class Truck extends Transport implements Competitor {
+
+    private LoadCapacity loadCapacity;
 
     public Truck() {
         super("", "", 0);
     }
-    public Truck(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity) {
         super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(LoadCapacity loadCapacity) {
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -32,6 +45,19 @@ public class Truck extends Transport implements Competitor {
     @Override
     public void stopMoving() {
         System.out.println("The truck is stopping");
+    }
+
+    @Override
+    public void printType() {
+        if (loadCapacity == null) {
+            System.out.println("There is not enough data on truck");
+        } else {
+            String loadCapacityLowerLimit = loadCapacity.getLoadCapacityLowerLimit() == null ? "" : "from " +
+                    loadCapacity.getLoadCapacityLowerLimit() + " tons";
+            String loadCapacityUpperLimit = loadCapacity.getLoadCapacityUpperLimit() == null ? "" : " to " +
+                    loadCapacity.getLoadCapacityUpperLimit() + " tons";
+            System.out.println("Load capacity: " + loadCapacityLowerLimit + loadCapacityUpperLimit);
+        }
     }
 
     @Override

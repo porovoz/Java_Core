@@ -3,16 +3,14 @@ package course02.lesson05;
 import course02.lesson05.driver.DriverB;
 import course02.lesson05.driver.DriverC;
 import course02.lesson05.driver.DriverD;
-import course02.lesson05.transport.Bus;
-import course02.lesson05.transport.Car;
-import course02.lesson05.transport.Truck;
+import course02.lesson05.transport.*;
 
 public class Main {
     public static void main(String[] args) {
-        Car bmwZ4 = new Car("BMW", "Z4", 4.0);
-        Car audiR8 = new Car("Audi", "R8", 4.2);
-        Car porsche911 = new Car("Porsche", "911", 4.5);
-        Car mitsubishiLancerEvolution = new Car("Mitsubishi", "Lancer Evolution", 2.5);
+        Car bmwZ4 = new Car("BMW", "Z4", 4.0, BodyType.BODY_TYPE_COUPE);
+        Car audiR8 = new Car("Audi", "R8", 4.2, BodyType.BODY_TYPE_COUPE);
+        Car porsche911 = new Car("Porsche", "911", 4.5, BodyType.BODY_TYPE_COUPE);
+        Car mitsubishiLancerEvolution = new Car("Mitsubishi", "Lancer Evolution", 2.5, BodyType.BODY_TYPE_SEDAN);
 
         System.out.println(bmwZ4);
         bmwZ4.startMoving();
@@ -26,10 +24,10 @@ public class Main {
 
         System.out.println("------------------------------------------------------------------");
 
-        Bus neoplanN5218 = new Bus("Neoplan", "N5218", 12.4);
-        Bus mercedesBenzTravego = new Bus("Mercedes-Benz", "Travego", 11.9);
-        Bus scaniaTouring = new Bus("Scania", "Touring", 13.0);
-        Bus ikarus386 = new Bus("Ikarus", "386", 10.3);
+        Bus neoplanN5218 = new Bus("Neoplan", "N5218", 12.4, SeatsCapacity.SEATS_CAPACITY_LARGE);
+        Bus mercedesBenzTravego = new Bus("Mercedes-Benz", "Travego", 11.9, SeatsCapacity.SEATS_CAPACITY_MEDIUM);
+        Bus scaniaTouring = new Bus("Scania", "Touring", 13.0, SeatsCapacity.SEATS_CAPACITY_LARGE);
+        Bus ikarus386 = new Bus("Ikarus", "386", 10.3, SeatsCapacity.SEATS_CAPACITY_LARGE);
 
         System.out.println(neoplanN5218);
         neoplanN5218.startMoving();
@@ -43,10 +41,10 @@ public class Main {
 
         System.out.println("------------------------------------------------------------------");
 
-        Truck kamaz4326 = new Truck("Kamaz", "4326", 18.5);
-        Truck ivecoStralis = new Truck("Iveco", "Stralis", 12.9);
-        Truck hino500 = new Truck("Hino", "500", 12.5);
-        Truck dafX2 = new Truck("DAF", "X2", 11.5);
+        Truck kamaz4326 = new Truck("Kamaz", "4326", 18.5, LoadCapacity.LOAD_CAPACITY_N2);
+        Truck ivecoStralis = new Truck("Iveco", "Stralis", 12.9, LoadCapacity.LOAD_CAPACITY_N1);
+        Truck hino500 = new Truck("Hino", "500", 12.5, LoadCapacity.LOAD_CAPACITY_N2);
+        Truck dafX2 = new Truck("DAF", "X2", 11.5, LoadCapacity.LOAD_CAPACITY_N2);
 
         System.out.println(kamaz4326);
         kamaz4326.startMoving();

@@ -29,6 +29,7 @@ public class DriverD <T extends Transport & Competitor> extends Driver {
     public void drive(T transport) {
         System.out.println("The driver: " + getFullName() + " is driving the vehicle: " + transport.getBrand() + " " +
                 transport.getModel() + " and will participate in the race");
+        transport.printType();
     }
 
     @Override

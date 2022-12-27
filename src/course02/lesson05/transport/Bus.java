@@ -1,11 +1,23 @@
 package course02.lesson05.transport;
 
 public class Bus extends Transport implements Competitor {
+
+    private SeatsCapacity seatsCapacity;
+
     public Bus() {
         super("", "", 0);
     }
-    public Bus(String brand, String model, double engineVolume) {
+    public Bus(String brand, String model, double engineVolume, SeatsCapacity seatsCapacity) {
         super(brand, model, engineVolume);
+        this.seatsCapacity = seatsCapacity;
+    }
+
+    public SeatsCapacity getSeatsCapacity() {
+        return seatsCapacity;
+    }
+
+    public void setSeatsCapacity(SeatsCapacity seatsCapacity) {
+        this.seatsCapacity = seatsCapacity;
     }
 
     @Override
@@ -31,6 +43,16 @@ public class Bus extends Transport implements Competitor {
     @Override
     public void stopMoving() {
         System.out.println("The bus is stopping");
+    }
+
+    @Override
+    public void printType() {
+        if (seatsCapacity == null) {
+            System.out.println("There is not enough data on bus");
+        } else {
+            System.out.println("Seats capacity: from " + seatsCapacity.getSeatsCapacityLowerLimit() + " seats to " +
+                    seatsCapacity.getSeatsCapacityUpperLimit() + " seats");
+        }
     }
 
     @Override

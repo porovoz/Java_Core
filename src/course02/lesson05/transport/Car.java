@@ -2,12 +2,23 @@ package course02.lesson05.transport;
 
 public class Car extends Transport implements Competitor {
 
+    private BodyType bodyType;
+
     public Car() {
         super("", "", 0);
     }
 
-    public Car(String brand, String model, double engineVolume) {
+    public Car(String brand, String model, double engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override
@@ -33,6 +44,15 @@ public class Car extends Transport implements Competitor {
     @Override
     public void stopMoving() {
         System.out.println("The car is stopping");
+    }
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("There is not enough data on car");
+        } else {
+            System.out.println(bodyType);
+        }
     }
 
     @Override
