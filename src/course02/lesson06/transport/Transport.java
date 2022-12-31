@@ -70,4 +70,17 @@ public abstract class Transport {
     public abstract void stopMoving();
 
     public abstract void printType();
+
+    public abstract void passDiagnostics();
+
+    public static void performDiagnostics(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                transport.passDiagnostics();
+            } catch (UnsupportedOperationException e) {
+                System.out.println("An error occurred");
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }

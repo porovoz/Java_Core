@@ -58,11 +58,18 @@ public class Main {
 
         System.out.println("------------------------------------------------------------------");
 
-        DriverD<Bus> ilja = new DriverD<>("Ilja Andreevich Semenov", true, 12);
+        DriverD<Bus> ilja = new DriverD<>("Ilja Andreevich Semenov", true, 12,
+                "D");
         ilja.drive(neoplanN5218);
-        DriverB<Car> andrej = new DriverB<>("Andrej Alekseevich Mihailov", true, 11);
+        DriverB<Car> andrej = new DriverB<>("Andrej Alekseevich Mihailov", true, 11,
+                "B");
         andrej.drive(audiR8);
-        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true, 10);
+        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true,
+                10, "C");
         sergej.drive(dafX2);
+        System.out.println();
+
+        Transport.performDiagnostics(bmwZ4, audiR8, porsche911, mitsubishiLancerEvolution, neoplanN5218, mercedesBenzTravego,
+                scaniaTouring, ikarus386, kamaz4326, ivecoStralis, hino500, dafX2);
     }
 }

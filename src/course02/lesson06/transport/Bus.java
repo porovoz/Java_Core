@@ -56,6 +56,11 @@ public class Bus extends Transport implements Competitor {
     }
 
     @Override
+    public void passDiagnostics() {
+        throw new UnsupportedOperationException("The bus " + getBrand() + ", " + getModel() + " can not be diagnosed");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Your bus should drive to a pit-stop");
     }

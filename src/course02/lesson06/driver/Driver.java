@@ -6,8 +6,9 @@ public abstract class Driver {
 private String fullName;
 private boolean driversLicence;
 private int drivingExperience;
+private String category;
 
-public Driver(String fullName, boolean driversLicence, int drivingExperience) {
+public Driver(String fullName, boolean driversLicence, int drivingExperience, String category) {
         if (fullName == null || fullName.isEmpty()) {
         this.fullName = "Ivanov Ivan Ivanovich";
         } else {
@@ -19,13 +20,14 @@ public Driver(String fullName, boolean driversLicence, int drivingExperience) {
         } else {
         this.drivingExperience = drivingExperience;
         }
-        }
+        setCategory(category);
+}
 
 public String getFullName() {
         return fullName;
         }
 
-public void setFullName(String fullName) {
+        public void setFullName(String fullName) {
         if (fullName == null || fullName.isEmpty()) {
         this.fullName = "Ivanov Ivan Ivanovich";
         } else {
@@ -53,28 +55,50 @@ public void setDrivingExperience(int drivingExperience) {
         }
         }
 
-@Override
-public String toString() {
-        return "Driver's fullName: " + fullName + ", has drivers licence: " + driversLicence +
-        ", with driving experience of: " + drivingExperience + " years";
+        public String getCategory() {
+                return category;
         }
 
+        public void setCategory(String category) {
+                if (category == null || category.isEmpty()) {
+                        try {
+                                throw new DriversLicenceException("Driver's licence category have to be specified" +
+                                        " for the driver " + getFullName());
+                        } catch (DriversLicenceException e) {
+                                System.out.println(e.getMessage());
+                        }
+                } else if (category.equals("B") || category.equals("C") || category.equals("D")) {
+                        this.category = category;
+                } else {
+                        try {
+                                throw new DriversLicenceException("Driver's licence category have to be specified" +
+                                        " for the driver " + getFullName());
+                        } catch (DriversLicenceException e) {
+                                System.out.println(e.getMessage());
+                        }
+                }
+        }
+
+
+        @Override
+        public String toString() {
+        return "Driver's fullName: " + fullName + ", has drivers licence category " + category +
+        ", with driving experience of: " + drivingExperience + " years";
+        }
 
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
                 if (o == null || getClass() != o.getClass()) return false;
                 Driver driver = (Driver) o;
-                return driversLicence == driver.driversLicence && drivingExperience == driver.drivingExperience && Objects.equals(fullName, driver.fullName);
+                return driversLicence == driver.driversLicence && drivingExperience == driver.drivingExperience && Objects.equals(fullName, driver.fullName) && Objects.equals(category, driver.category);
         }
 
         @Override
         public int hashCode() {
-                return Objects.hash(fullName, driversLicence, drivingExperience);
+                return Objects.hash(fullName, driversLicence, drivingExperience, category);
         }
-
-        //    public abstract void drive();
-public abstract void startMoving();
-public abstract void stopMoving();
-public abstract void refuelTheVehicle();
+        public abstract void startMoving();
+        public abstract void stopMoving();
+        public abstract void refuelTheVehicle();
 }

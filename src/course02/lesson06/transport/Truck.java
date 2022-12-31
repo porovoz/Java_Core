@@ -58,6 +58,11 @@ public class Truck extends Transport implements Competitor {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("The truck " + getBrand() + ", " + getModel() + " is under diagnostics");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Your truck should drive to a pit-stop");
     }

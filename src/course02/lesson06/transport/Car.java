@@ -55,6 +55,11 @@ public class Car extends Transport implements Competitor {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("The car " + getBrand() + ", " + getModel() + " is under diagnostics");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Your car should drive to a pit-stop");
     }
