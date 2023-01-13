@@ -1,15 +1,34 @@
 package course02.lesson07.transport;
 
+import course02.lesson07.driver.Driver;
+import course02.lesson07.mechanic.Mechanic;
+import course02.lesson07.mechanic.ProfessionalSkills;
+
+import java.util.ArrayList;
+
 public class Car extends Transport implements Competitor {
 
     private BodyType bodyType;
 
     public Car() {
-        super("", "", 0);
+        super("", "", 0, 0, 1);
     }
 
-    public Car(String brand, String model, double engineVolume, BodyType bodyType) {
-        super(brand, model, engineVolume);
+    public Car(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+               BodyType bodyType) {
+        super(brand, model, engineVolume, mechanicQuantity, driverQuantity);
+        this.bodyType = bodyType;
+    }
+
+    public Car(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+               ArrayList<Mechanic> mechanics, BodyType bodyType) {
+        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics);
+        this.bodyType = bodyType;
+    }
+
+    public Car(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+               ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers, BodyType bodyType) {
+        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics, drivers);
         this.bodyType = bodyType;
     }
 
@@ -58,6 +77,50 @@ public class Car extends Transport implements Competitor {
     @Override
     public void passDiagnostics() {
         System.out.println("The car " + getBrand() + ", " + getModel() + " is under diagnostics");
+    }
+
+    @Override
+    public void getInformationAboutDriverAndMechanic(ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers) {
+        if (mechanics != null || drivers != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
+                        mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT
+                && mechanics.size() < 2) {
+                    System.out.println("The car " + getBrand() + " " + getModel() + ", with engine volume "
+                            + getEngineVolume() + " l. is servicing by mechanic " + mechanic);
+                }
+            }
+            for (Driver driver : drivers) {
+                if (driver.getCategory().equals("B")) {
+                    System.out.println("The car " + getBrand() + " " + getModel() + ", with engine volume "
+                            + getEngineVolume() + " l. is driven by " + driver.getFullName());
+                }
+            }
+        }
+    }
+
+    @Override
+    public void carryOutTechnicalService() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
+                        mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+                    mechanic.carryOutTechnicalService(this);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void fixTheVehicle() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
+                        mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+                    mechanic.fixTheVehicle(this);
+                }
+            }
+        }
     }
 
     @Override
