@@ -1,6 +1,7 @@
 package course02.lesson07.transport;
 
 import course02.lesson07.driver.Driver;
+import course02.lesson07.driver.DriverC;
 import course02.lesson07.mechanic.Mechanic;
 import course02.lesson07.mechanic.ProfessionalSkills;
 
@@ -12,24 +13,24 @@ public class Truck extends Transport implements Competitor {
     private LoadCapacity loadCapacity;
 
     public Truck() {
-        super("", "", 0, 0, 1);
+        super("", "", 0, 0, null);
     }
 
-    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, DriverC driver,
                  LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity);
+        super(brand, model, engineVolume, mechanicQuantity, driver);
         this.loadCapacity = loadCapacity;
     }
 
-    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, DriverC driver,
                  ArrayList<Mechanic> mechanics, LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics);
+        super(brand, model, engineVolume, mechanicQuantity, driver, mechanics);
         this.loadCapacity = loadCapacity;
     }
 
-    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Truck(String brand, String model, double engineVolume, int mechanicQuantity, DriverC driver,
                  ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers, LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics, drivers);
+        super(brand, model, engineVolume, mechanicQuantity, driver, mechanics, drivers);
         this.loadCapacity = loadCapacity;
     }
 
@@ -85,22 +86,24 @@ public class Truck extends Transport implements Competitor {
     }
 
     @Override
-    public void getInformationAboutDriverAndMechanic(ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers) {
+    public void getInformationAboutDriverAndMechanic() {
         if (mechanics != null || drivers != null) {
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS ||
                         mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT
-                && mechanics.size() < 3) {
+                && mechanics.size() < 4) {
                     System.out.println("The truck " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is servicing by mechanic " + mechanic);
                 }
             }
             for (Driver driver : drivers) {
-                if (driver.getCategory().equals("C")) {
+                if (Objects.equals(driver.getFullName(), getDriver().getFullName())) {
                     System.out.println("The truck " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is driven by " + driver.getFullName());
                 }
             }
+        } else {
+            System.out.println("There is no driver and mechanics for this truck");
         }
     }
 
@@ -126,6 +129,18 @@ public class Truck extends Transport implements Competitor {
                 }
             }
         }
+    }
+
+    @Override
+    public void createMechanicTeam(Mechanic... mechanics) {
+        ArrayList<Mechanic> mechanicTeam = new ArrayList<>();
+        for (Mechanic mechanic : mechanics) {
+            if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS ||
+                    mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+                mechanicTeam.add(mechanic);
+            }
+        }
+        mechanicTeam.forEach(System.out::println);
     }
 
     @Override

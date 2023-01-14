@@ -2,6 +2,8 @@ package course02.lesson07.transport;
 
 import course02.lesson07.driver.Driver;
 import course02.lesson07.mechanic.Mechanic;
+import course02.lesson07.mechanic.ProfessionalSkills;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -10,11 +12,11 @@ public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineVolume;
-    public ArrayList<Driver> drivers;
-    public ArrayList<Mechanic> mechanics;
+    protected ArrayList<Driver> drivers;
+    protected ArrayList<Mechanic> mechanics;
     private int mechanicQuantity;
-    private int driverQuantity;
-    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity) {
+    private Driver driver;
+    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, Driver driver) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "default";
         } else {
@@ -31,10 +33,12 @@ public abstract class Transport {
             this.engineVolume = engineVolume;
         }
         setMechanicQuantity(mechanicQuantity);
-        setDriverQuantity(driverQuantity);
+        if (driver != null) {
+            this.driver = driver;
+        }
     }
 
-    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, Driver driver,
                      ArrayList<Mechanic> mechanics) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "default";
@@ -52,11 +56,13 @@ public abstract class Transport {
             this.engineVolume = engineVolume;
         }
         setMechanicQuantity(mechanicQuantity);
-        setDriverQuantity(driverQuantity);
+        if (driver != null) {
+            this.driver = driver;
+        }
         this.mechanics = mechanics;
     }
 
-    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Transport(String brand, String model, double engineVolume, int mechanicQuantity, Driver driver,
                      ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "default";
@@ -74,20 +80,22 @@ public abstract class Transport {
             this.engineVolume = engineVolume;
         }
         setMechanicQuantity(mechanicQuantity);
-        setDriverQuantity(driverQuantity);
+        if (driver != null) {
+            this.driver = driver;
+        }
         this.mechanics = mechanics;
         this.drivers = drivers;
     }
 
-    public int getDriverQuantity() {
-        return driverQuantity;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setDriverQuantity(int driverQuantity) {
-        if (driverQuantity == 1) {
-            this.driverQuantity = driverQuantity;
-        } else {
-            throw new IndexOutOfBoundsException("One vehicle have only one driver");
+    public void setDriver(Driver driver) {
+        if (driver != null) {
+            this.driver = driver;
+//        } else {
+//            throw new IllegalArgumentException("The driver can not be null");
         }
     }
 
@@ -125,6 +133,30 @@ public abstract class Transport {
         }
     }
 
+    public ArrayList<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(ArrayList<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    public ArrayList<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+//    public void setMechanics(ArrayList<Mechanic> mechanics) {
+//        for (Mechanic mechanic : mechanics) {
+//            mechanics.add(mechanic);
+//            System.out.println("Mechanic " + mechanic.getFirstName() + " " + mechanic.getLastName() +
+//                    " was added to the mechanics list");
+//        }
+//    }
+
+    public void setMechanics(ArrayList<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
+
     @Override
     public String toString() {
         return "Brand: " + getBrand() + ", " + "Model: " + getModel() + ", " + "Engine volume: " + getEngineVolume()
@@ -152,11 +184,13 @@ public abstract class Transport {
 
     public abstract void passDiagnostics();
 
-    public abstract void getInformationAboutDriverAndMechanic(ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers);
+    public abstract void getInformationAboutDriverAndMechanic();
 
     public abstract void fixTheVehicle();
 
     public abstract void carryOutTechnicalService();
+
+    public abstract void createMechanicTeam(Mechanic... mechanics);
 
 
 

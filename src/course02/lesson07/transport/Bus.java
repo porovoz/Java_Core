@@ -1,33 +1,35 @@
 package course02.lesson07.transport;
 
 import course02.lesson07.driver.Driver;
+import course02.lesson07.driver.DriverD;
 import course02.lesson07.mechanic.Mechanic;
 import course02.lesson07.mechanic.ProfessionalSkills;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Bus extends Transport implements Competitor {
 
     private SeatsCapacity seatsCapacity;
 
     public Bus() {
-        super("", "", 0, 0, 1);
+        super("", "", 0, 0, null);
     }
 
-    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, DriverD driver,
                SeatsCapacity seatsCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity);
+        super(brand, model, engineVolume, mechanicQuantity, driver);
         this.seatsCapacity = seatsCapacity;
     }
 
-    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, DriverD driver,
                ArrayList<Mechanic> mechanics, SeatsCapacity seatsCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics);
+        super(brand, model, engineVolume, mechanicQuantity, driver, mechanics);
         this.seatsCapacity = seatsCapacity;
     }
 
-    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, int driverQuantity,
+    public Bus(String brand, String model, double engineVolume, int mechanicQuantity, DriverD driver,
                ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers, SeatsCapacity seatsCapacity) {
-        super(brand, model, engineVolume, mechanicQuantity, driverQuantity, mechanics, drivers);
+        super(brand, model, engineVolume, mechanicQuantity, driver, mechanics, drivers);
         this.seatsCapacity = seatsCapacity;
     }
 
@@ -80,22 +82,24 @@ public class Bus extends Transport implements Competitor {
     }
 
     @Override
-    public void getInformationAboutDriverAndMechanic(ArrayList<Mechanic> mechanics, ArrayList<Driver> drivers) {
+    public void getInformationAboutDriverAndMechanic() {
         if (mechanics != null || drivers != null) {
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES ||
                         mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT
-                                && mechanics.size() < 3) {
+                                && mechanics.size() < 4) {
                     System.out.println("The bus " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is servicing by mechanic " + mechanic);
                 }
             }
             for (Driver driver : drivers) {
-                if (driver.getCategory().equals("D")) {
+                if (Objects.equals(driver.getFullName(), getDriver().getFullName())) {
                     System.out.println("The bus " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is driven by " + driver.getFullName());
                 }
             }
+        } else {
+            System.out.println("There is no driver and mechanics for this bus");
         }
     }
 
@@ -121,6 +125,18 @@ public class Bus extends Transport implements Competitor {
                 }
             }
         }
+    }
+
+    @Override
+    public void createMechanicTeam(Mechanic... mechanics) {
+        ArrayList<Mechanic> mechanicTeam = new ArrayList<>();
+        for (Mechanic mechanic : mechanics) {
+            if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES ||
+            mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+                mechanicTeam.add(mechanic);
+            }
+        }
+        mechanicTeam.forEach(System.out::println);
     }
 
     @Override

@@ -2,7 +2,7 @@ package course02.lesson07.mechanic;
 import course02.lesson07.transport.Transport;
 import java.util.Objects;
 
-public class Mechanic <T extends Transport>{
+public class Mechanic {
     private final String firstName;
     private final String lastName;
     private String company;

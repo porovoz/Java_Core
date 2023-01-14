@@ -16,41 +16,67 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Driver> drivers = new ArrayList<>();
-        DriverD<Bus> ilja = new DriverD<>("Ilja Andreevich Semenov", true, 12,
-                "D");
         DriverB<Car> andrej = new DriverB<>("Andrej Alekseevich Mihailov", true, 11,
                 "B");
-        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true,
-                10, "C");
-        DriverD<Bus> irina = new DriverD<>("Irina Mihailovna Malisheva", true, 14,
-                "D");
         DriverB<Car> ekaterina = new DriverB<>("Ekaterina Alekseevna Kuzmich", true,
                 17, "B");
+        DriverB<Car> artjom = new DriverB<>("Artjom Nikolajevich Zhilin", true, 9,
+                "B");
+        DriverB<Car> aleksandra = new DriverB<>("Aleksandra Evgenjevna Klimova", true,
+                8, "B");
+        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true,
+                10, "C");
         DriverC<Truck> nina = new DriverC<>("Nina Sergeevna Poznjakova", true, 10,
                 "C");
-        drivers.add(ilja);
+        DriverC<Truck> arkadij = new DriverC<>("Arkadij Sergeevich Tumanov", true, 20,
+                "C");
+        DriverC<Truck> tatjana = new DriverC<>("Tatjana Alekseevna Guseva", true, 17,
+                "C");
+        DriverD<Bus> ilja = new DriverD<>("Ilja Andreevich Semenov", true, 12,
+                "D");
+        DriverD<Bus> irina = new DriverD<>("Irina Mihailovna Malisheva", true, 14,
+                "D");
+        DriverD<Bus> innokentij = new DriverD<>("Innokentij Petrovich Muhin", true,
+                10, "D");
+        DriverD<Bus> elizaveta = new DriverD<>("Elizaveta Petrovna Guschina", true, 8,
+                "D");
         drivers.add(andrej);
-        drivers.add(sergej);
-        drivers.add(irina);
         drivers.add(ekaterina);
+        drivers.add(artjom);
+        drivers.add(aleksandra);
+        drivers.add(sergej);
         drivers.add(nina);
+        drivers.add(arkadij);
+        drivers.add(tatjana);
+        drivers.add(ilja);
+        drivers.add(irina);
+        drivers.add(innokentij);
+        drivers.add(elizaveta);
 
         ArrayList<Mechanic> mechanics = new ArrayList<>();
-        Mechanic<Car> leonid = new Mechanic<>("Leonid", "Kirillov", "MTM",
+        Mechanic leonid = new Mechanic("Leonid", "Kirillov", "MTM",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS);
-        Mechanic<Bus> aleksej = new Mechanic<>("Aleksej", "Sinitcin", "MehTeh",
+        Mechanic aleksej = new Mechanic("Aleksej", "Sinitcin", "MehTeh",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES);
-        Mechanic<Truck> vladimir = new Mechanic<>("Vladimir", "Nikiforov", "Avto Profi",
+        Mechanic vladimir = new Mechanic("Vladimir", "Nikiforov", "Avto Profi",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS);
         Mechanic anton = new Mechanic("Anton", "Kovalev", "Spectrans",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
-        Mechanic<Car> maria = new Mechanic<>("Maria", "Inina", "ABT",
+        Mechanic maria = new Mechanic("Maria", "Inina", "ABT",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS);
-        Mechanic<Bus> ksenia = new Mechanic<>("Ksenia", "Starostina", "GP",
+        Mechanic ksenia = new Mechanic("Ksenia", "Starostina", "GP",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES);
-        Mechanic<Truck> elena = new Mechanic<>("Elena", "German", "AutoDelo",
+        Mechanic elena = new Mechanic("Elena", "German", "AutoDelo",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS);
-        Mechanic anastasia = new Mechanic<>("Anastasia", "Eremina", "Remservis",
+        Mechanic anastasia = new Mechanic("Anastasia", "Eremina", "Remservis",
+                ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
+        Mechanic gennadij = new Mechanic("Gennadij", "Semenchuk", "STM",
+                ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS);
+        Mechanic matvej = new Mechanic("Matvej", "Gubin", "Busfix",
+                ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES);
+        Mechanic mark = new Mechanic("Mark", "Kent", "Schumtruck",
+                ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS);
+        Mechanic arsenij = new Mechanic("Arsenij", "Kisilev", "Unicar",
                 ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
         mechanics.add(leonid);
         mechanics.add(aleksej);
@@ -60,36 +86,40 @@ public class Main {
         mechanics.add(ksenia);
         mechanics.add(elena);
         mechanics.add(anastasia);
+        mechanics.add(gennadij);
+        mechanics.add(matvej);
+        mechanics.add(mark);
+        mechanics.add(arsenij);
         System.out.println(mechanics);
         mechanics.forEach(System.out::println);
         System.out.println();
 
         ArrayList<Transport> transports = new ArrayList<>();
-        Car bmwZ4 = new Car("BMW", "Z4", 4.0, 1, 1, mechanics, drivers,
+        Car bmwZ4 = new Car("BMW", "Z4", 4.0, 1, ekaterina, mechanics, drivers,
                 BodyType.BODY_TYPE_COUPE);
-        Car audiR8 = new Car("Audi", "R8", 4.2, 2, 1, mechanics,
+        Car audiR8 = new Car("Audi", "R8", 4.2, 2, andrej, mechanics,
                 drivers, BodyType.BODY_TYPE_COUPE);
-        Car porsche911 = new Car("Porsche", "911", 4.5, 3, 1,
+        Car porsche911 = new Car("Porsche", "911", 4.5, 3, artjom,
                 mechanics, drivers, BodyType.BODY_TYPE_COUPE);
         Car mitsubishiLancerEvolution = new Car("Mitsubishi", "Lancer Evolution", 2.5,
-                2, 1, mechanics, drivers, BodyType.BODY_TYPE_SEDAN);
+                2, aleksandra, mechanics, drivers, BodyType.BODY_TYPE_SEDAN);
 
-        Bus neoplanN5218 = new Bus("Neoplan", "N5218", 12.4, 3, 1,
+        Bus neoplanN5218 = new Bus("Neoplan", "N5218", 12.4, 3, ilja,
                 mechanics, drivers, SeatsCapacity.SEATS_CAPACITY_LARGE);
         Bus mercedesBenzTravego = new Bus("Mercedes-Benz", "Travego", 11.9, 2,
-                1, mechanics, drivers, SeatsCapacity.SEATS_CAPACITY_MEDIUM);
-        Bus scaniaTouring = new Bus("Scania", "Touring", 13.0, 2, 1,
+                irina, mechanics, drivers, SeatsCapacity.SEATS_CAPACITY_MEDIUM);
+        Bus scaniaTouring = new Bus("Scania", "Touring", 13.0, 2, innokentij,
                 mechanics, drivers, SeatsCapacity.SEATS_CAPACITY_LARGE);
-        Bus ikarus386 = new Bus("Ikarus", "386", 10.3, 1, 1,
+        Bus ikarus386 = new Bus("Ikarus", "386", 10.3, 1, elizaveta,
                 mechanics, drivers, SeatsCapacity.SEATS_CAPACITY_LARGE);
 
-        Truck kamaz4326 = new Truck("Kamaz", "4326", 18.5, 2, 1,
+        Truck kamaz4326 = new Truck("Kamaz", "4326", 18.5, 2, sergej,
                 mechanics, drivers, LoadCapacity.LOAD_CAPACITY_N2);
-        Truck ivecoStralis = new Truck("Iveco", "Stralis", 12.9, 3, 1,
+        Truck ivecoStralis = new Truck("Iveco", "Stralis", 12.9, 3, nina,
                 mechanics, drivers, LoadCapacity.LOAD_CAPACITY_N1);
-        Truck hino500 = new Truck("Hino", "500", 12.5, 2, 1, mechanics,
+        Truck hino500 = new Truck("Hino", "500", 12.5, 2, arkadij, mechanics,
                 drivers, LoadCapacity.LOAD_CAPACITY_N2);
-        Truck dafX2 = new Truck("DAF", "X2", 11.5, 1, 1, mechanics,
+        Truck dafX2 = new Truck("DAF", "X2", 11.5, 1, tatjana, mechanics,
                 drivers, LoadCapacity.LOAD_CAPACITY_N2);
 
         transports.add(bmwZ4);
@@ -154,7 +184,8 @@ public class Main {
         bmwZ4.carryOutTechnicalService();
         neoplanN5218.carryOutTechnicalService();
         dafX2.carryOutTechnicalService();
-        audiR8.getInformationAboutDriverAndMechanic(mechanics, drivers);
-        neoplanN5218.getInformationAboutDriverAndMechanic(mechanics, drivers);
+        audiR8.getInformationAboutDriverAndMechanic();
+        neoplanN5218.getInformationAboutDriverAndMechanic();
+        kamaz4326.getInformationAboutDriverAndMechanic();
     }
 }
