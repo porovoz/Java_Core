@@ -128,15 +128,15 @@ public class Car extends Transport implements Competitor {
     }
 
     @Override
-    public void createMechanicTeam(Mechanic... mechanics) {
-        ArrayList<Mechanic> mechanicTeam = new ArrayList<>();
+    public void addMechanicInList(Mechanic... mechanics) {
+        ArrayList<Mechanic> mechanicList = new ArrayList<>();
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
                     mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
-                mechanicTeam.add(mechanic);
+                mechanicList.add(mechanic);
             }
         }
-        mechanicTeam.forEach(System.out::println);
+        mechanicList.forEach(System.out::println);
     }
 
     @Override
