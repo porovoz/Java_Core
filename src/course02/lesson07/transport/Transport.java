@@ -183,10 +183,6 @@ public abstract class Transport {
 
     public abstract void addMechanicInList(Mechanic mechanic);
 
-    public void addMechanic(Mechanic mechanic) {
-        mechanics.add(mechanic);
-    }
-
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {
             try {
