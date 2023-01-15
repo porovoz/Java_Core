@@ -185,5 +185,35 @@ public class Main {
         audiR8.getInformationAboutDriverAndMechanic();
         neoplanN5218.getInformationAboutDriverAndMechanic();
         kamaz4326.getInformationAboutDriverAndMechanic();
+
+        Map<Transport, ArrayList<Mechanic>> transportMechanicMap = new HashMap<>();
+        for (Transport transport : transports) {
+            transportMechanicMap.put(transport, transport.getMechanics());
+        }
+
+        for (Map.Entry<Transport, ArrayList<Mechanic>> map : transportMechanicMap.entrySet()) {
+            System.out.println(map.getKey() + " " + map.getValue());
+        }
+
+        for (Transport transport : transports) {
+            transportMechanicMap.put(transport, transport.getMechanics());
+        }
+
+        for (Map.Entry<Transport, ArrayList<Mechanic>> map : transportMechanicMap.entrySet()) {
+            System.out.println(map.getKey() + " " + map.getValue());
+        }
+
+//        Or we can manually insert pairs of keys and value in map.
+//        Map<Transport, Mechanic> transportMechanicMap1 = new HashMap<>();
+//        transportMechanicMap1.put(audiR8, leonid);
+//        transportMechanicMap1.put(audiR8, maria);
+//        transportMechanicMap1.put(bmwZ4, gennadij);
+//        transportMechanicMap1.put(porsche911, anastasia);
+//        transportMechanicMap1.put(mitsubishiLancerEvolution, arsenij);
+//        transportMechanicMap1.putIfAbsent(audiR8, leonid); This method solves situation when there is no the same pair
+//        of key and value in the map than this pair is adding in the map.
+        //       System.out.println(transportMechanicMap);
+
+
     }
 }
