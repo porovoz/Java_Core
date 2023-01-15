@@ -182,9 +182,7 @@ public abstract class Transport {
 
     public abstract void carryOutTechnicalService();
 
-    public abstract void addMechanicInList(Mechanic... mechanics);
-
-
+    public abstract void addMechanicInList(Mechanic mechanic);
 
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {

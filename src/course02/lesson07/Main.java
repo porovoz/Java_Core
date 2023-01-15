@@ -187,6 +187,5 @@ public class Main {
         audiR8.getInformationAboutDriverAndMechanic();
         neoplanN5218.getInformationAboutDriverAndMechanic();
         kamaz4326.getInformationAboutDriverAndMechanic();
-        kamaz4326.addMechanicInList(anton, aleksej, anastasia, leonid, gennadij);
     }
 }

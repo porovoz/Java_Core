@@ -132,15 +132,14 @@ public class Truck extends Transport implements Competitor {
     }
 
     @Override
-    public void addMechanicInList(Mechanic... mechanics) {
-        ArrayList<Mechanic> mechanicList = new ArrayList<>();
-        for (Mechanic mechanic : mechanics) {
-            if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS ||
-                    mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
-                mechanicList.add(mechanic);
+    public void addMechanicInList(Mechanic mechanic) {
+        for (Mechanic value : mechanics) {
+            if (value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS ||
+                    value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+                mechanics.add(mechanic);
             }
         }
-        mechanicList.forEach(System.out::println);
+        mechanics.forEach(System.out::println);
     }
 
     @Override
