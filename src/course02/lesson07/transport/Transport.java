@@ -2,7 +2,6 @@ package course02.lesson07.transport;
 
 import course02.lesson07.driver.Driver;
 import course02.lesson07.mechanic.Mechanic;
-import course02.lesson07.mechanic.ProfessionalSkills;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -183,6 +182,10 @@ public abstract class Transport {
     public abstract void carryOutTechnicalService();
 
     public abstract void addMechanicInList(Mechanic mechanic);
+
+    public void addMechanic(Mechanic mechanic) {
+        mechanics.add(mechanic);
+    }
 
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {
