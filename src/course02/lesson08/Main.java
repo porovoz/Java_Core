@@ -213,7 +213,5 @@ public class Main {
 //        transportMechanicMap1.putIfAbsent(audiR8, leonid); This method solves situation when there is no the same pair
 //        of key and value in the map than this pair is adding in the map.
         //       System.out.println(transportMechanicMap);
-
-
     }
 }

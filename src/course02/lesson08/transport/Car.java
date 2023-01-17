@@ -5,9 +5,7 @@ import course02.lesson08.driver.DriverB;
 import course02.lesson08.mechanic.Mechanic;
 import course02.lesson08.mechanic.ProfessionalSkills;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 public class Car extends Transport implements Competitor {
     private BodyType bodyType;
@@ -83,15 +81,21 @@ public class Car extends Transport implements Competitor {
 
     @Override
     public void getInformationAboutDriverAndMechanic() {
-        if (mechanics != null || drivers != null) {
+        if (mechanics != null) {
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
                         mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT
                                 && mechanics.size() < 3) {
+//                    mechanics.size() < 4 is not working because in this list there are many mechanics.
+//                    I need to think how to set exact mechanic's quantity to one vehicle.
                     System.out.println("The car " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is servicing by mechanic " + mechanic);
                 }
             }
+        } else {
+            System.out.println("There is no mechanics for this car");
+        }
+        if (drivers != null) {
             for (Driver driver : drivers) {
                 if (Objects.equals(driver.getFullName(), getDriver().getFullName())) {
                     System.out.println("The car " + getBrand() + " " + getModel() + ", with engine volume "
@@ -99,7 +103,7 @@ public class Car extends Transport implements Competitor {
                 }
             }
         } else {
-            System.out.println("There is no driver and mechanics for this car");
+            System.out.println("There is no driver for this car");
         }
     }
 
@@ -129,15 +133,11 @@ public class Car extends Transport implements Competitor {
 
     @Override
     public void addMechanicInList(Mechanic mechanic) {
-        if (!mechanics.contains(mechanic)) {
-            for (Mechanic value : mechanics) {
-                if (value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
-                        value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
-                    mechanics.add(mechanic);
-                }
-            }
-            mechanics.forEach(System.out::println);
+        if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS ||
+                mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+            mechanics.add(mechanic);
         }
+        System.out.println(mechanics);
     }
 
     @Override

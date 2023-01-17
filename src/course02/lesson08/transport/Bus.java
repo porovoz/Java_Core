@@ -82,15 +82,21 @@ public class Bus extends Transport implements Competitor {
 
     @Override
     public void getInformationAboutDriverAndMechanic() {
-        if (mechanics != null || drivers != null) {
+        if (mechanics != null) {
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES ||
                         mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT
                                 && mechanics.size() < 4) {
+//                    mechanics.size() < 4 is not working because in this list there are many mechanics.
+//                    I need to think how to set exact mechanic's quantity to one vehicle.
                     System.out.println("The bus " + getBrand() + " " + getModel() + ", with engine volume "
                             + getEngineVolume() + " l. is servicing by mechanic " + mechanic);
                 }
             }
+        } else {
+            System.out.println("There is no mechanics for this bus");
+        }
+        if (drivers != null) {
             for (Driver driver : drivers) {
                 if (Objects.equals(driver.getFullName(), getDriver().getFullName())) {
                     System.out.println("The bus " + getBrand() + " " + getModel() + ", with engine volume "
@@ -98,7 +104,7 @@ public class Bus extends Transport implements Competitor {
                 }
             }
         } else {
-            System.out.println("There is no driver and mechanics for this bus");
+            System.out.println("There is no driver for this bus");
         }
     }
 
@@ -128,15 +134,11 @@ public class Bus extends Transport implements Competitor {
 
     @Override
     public void addMechanicInList(Mechanic mechanic) {
-        if (!mechanics.contains(mechanic)) {
-            for (Mechanic value : mechanics) {
-                if (value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES ||
-                        value.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
-                    mechanics.add(mechanic);
-                }
-            }
-            mechanics.forEach(System.out::println);
+        if (mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES ||
+                mechanic.getProfessionalSkills() == ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT) {
+            mechanics.add(mechanic);
         }
+        System.out.println(mechanics);
     }
 
     @Override

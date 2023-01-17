@@ -142,14 +142,6 @@ public abstract class Transport {
         return mechanics;
     }
 
-//    public void setMechanics(ArrayList<Mechanic> mechanics) {
-//        for (Mechanic mechanic : mechanics) {
-//            mechanics.add(mechanic);
-//            System.out.println("Mechanic " + mechanic.getFirstName() + " " + mechanic.getLastName() +
-//                    " was added to the mechanics list");
-//        }
-//    }
-
     public void setMechanics(ArrayList<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
@@ -188,8 +180,6 @@ public abstract class Transport {
     public abstract void carryOutTechnicalService();
 
     public abstract void addMechanicInList(Mechanic mechanic);
-
-
 
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {
