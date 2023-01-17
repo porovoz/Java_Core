@@ -7,9 +7,9 @@ import course02.lesson09.driver.DriverD;
 import course02.lesson09.mechanic.Mechanic;
 import course02.lesson09.mechanic.ProfessionalSkills;
 import course02.lesson09.transport.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -216,5 +216,80 @@ public class Main {
 //        transportMechanicMap1.putIfAbsent(audiR8, leonid); This method solves situation when there is no the same pair
 //        of key and value in the map than this pair is adding in the map.
         //       System.out.println(transportMechanicMap);
+        System.out.println();
+
+// There are several variants of completing the task with HashSet.
+        // First variant with Iterator
+        Set<Mechanic> mechanicSet = new HashSet<>();
+        mechanicSet.add(leonid);
+        mechanicSet.add(aleksej);
+        mechanicSet.add(vladimir);
+        mechanicSet.add(anton);
+        mechanicSet.add(maria);
+        mechanicSet.add(ksenia);
+        mechanicSet.add(elena);
+        mechanicSet.add(maria); // adding duplicate
+        mechanicSet.add(ksenia); // adding duplicate
+        mechanicSet.add(elena); // adding duplicate
+        mechanicSet.add(anastasia);
+        mechanicSet.add(gennadij);
+        mechanicSet.add(matvej);
+        mechanicSet.add(mark);
+        mechanicSet.add(arsenij);
+        Iterator<Mechanic> iterator = mechanicSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        // Second variant
+//        Set<Mechanic> mechanicSet = new HashSet<>(mechanics);
+//        mechanicSet.forEach(System.out::println);
+
+       // Third variant but this is not the best variant.
+//       Set<Mechanic> mechanicSet = new HashSet<>();
+//       mechanicSet.addAll(mechanics); // because of this string of the code
+//       mechanicSet.addAll(mechanics);
+//       mechanicSet.forEach(System.out::println);
+//
+
+        // Fourth variant with the stream
+//        Set<Mechanic> mechanicSet = new HashSet<>();
+//        mechanicSet.addAll(mechanics);
+//        mechanicSet.addAll(mechanics); // adding duplicates
+//        Stream<Mechanic> stream = mechanicSet.stream();
+//        stream.forEach(System.out::println);
+
+        // Fifth variant with Iterator
+//        Set<Mechanic> mechanicSet = new HashSet<>();
+//        mechanicSet.add(aleksej);
+//        mechanicSet.add(anastasia);
+//        mechanicSet.add(aleksej); // adding duplicate
+//        mechanicSet.add(anastasia); // adding duplicate
+//        mechanicSet.iterator().forEachRemaining(System.out::println);
+
+        // Sixth variant
+//        Set<Mechanic> mechanicSet = new HashSet<>();
+//        mechanicSet.add(aleksej);
+//        mechanicSet.add(anastasia);
+//        mechanicSet.add(aleksej); // adding duplicate
+//        mechanicSet.add(anastasia); // adding duplicate
+//        for (Mechanic value : mechanicSet) {
+//            System.out.println(value);
+//        }
+
+        // Seventh variant with Enumeration
+//        Set<Mechanic> mechanicSet = new HashSet<>();
+//        mechanicSet.add(aleksej);
+//        mechanicSet.add(anastasia);
+//        mechanicSet.add(aleksej); // adding duplicate
+//        mechanicSet.add(anastasia); // adding duplicate
+//        Enumeration<Mechanic> enumeration;
+//        enumeration = Collections.enumeration(mechanicSet);
+//        while (enumeration.hasMoreElements()) {
+//            System.out.println(enumeration.nextElement());
+//        }
+
+// When we add the same values in the set the values are not duplicated.
+
     }
 }
