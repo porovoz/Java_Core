@@ -3,10 +3,11 @@ package course02.lesson06;
 import course02.lesson06.driver.DriverB;
 import course02.lesson06.driver.DriverC;
 import course02.lesson06.driver.DriverD;
+import course02.lesson06.driver.DriversLicenceException;
 import course02.lesson06.transport.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DriversLicenceException {
         Car bmwZ4 = new Car("BMW", "Z4", 4.0, BodyType.BODY_TYPE_COUPE);
         Car audiR8 = new Car("Audi", "R8", 4.2, BodyType.BODY_TYPE_COUPE);
         Car porsche911 = new Car("Porsche", "911", 4.5, BodyType.BODY_TYPE_COUPE);
@@ -71,5 +72,18 @@ public class Main {
 
         Transport.performDiagnostics(bmwZ4, audiR8, porsche911, mitsubishiLancerEvolution, neoplanN5218, mercedesBenzTravego,
                 scaniaTouring, ikarus386, kamaz4326, ivecoStralis, hino500, dafX2);
+        System.out.println();
+        try {
+            andrej.setCategory("B");
+        } catch (DriversLicenceException e) {
+            System.out.println("An exception occurred");
+            System.out.println(e.getMessage());
+        }
+        try {
+            andrej.setCategory("A");
+        } catch (DriversLicenceException e) {
+            System.out.println("An exception occurred");
+            System.out.println(e.getMessage());
+        }
     }
 }

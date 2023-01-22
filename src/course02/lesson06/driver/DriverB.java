@@ -5,11 +5,11 @@ import course02.lesson06.transport.Transport;
 
 public class DriverB <T extends Transport & Competitor> extends Driver {
 
-    public DriverB() {
+    public DriverB() throws DriversLicenceException {
         super("", true, 0, "");
     }
 
-    public DriverB(String fullName, boolean driversLicence, int drivingExperience, String category) {
+    public DriverB(String fullName, boolean driversLicence, int drivingExperience, String category) throws DriversLicenceException {
         super(fullName, driversLicence, drivingExperience, category);
     }
 

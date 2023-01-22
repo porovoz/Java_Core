@@ -22,7 +22,9 @@ public class Car extends Transport {
         key = new Key();
     }
 
-    public Car(String brand, String model, int productionYear, String productionCountry, String bodyColor, int maximumSpeed, double engineVolume, String gearbox, String bodyType, String registrationPlateNumber, int seatQuantity, boolean winterTyres, Key key) {
+    public Car(String brand, String model, int productionYear, String productionCountry, String bodyColor,
+               int maximumSpeed, double engineVolume, String gearbox, String bodyType,
+               String registrationPlateNumber, int seatQuantity, boolean winterTyres, Key key) {
         super(brand, model, productionYear, productionCountry, bodyColor, maximumSpeed);
         if (engineVolume <= 0) {
             this.engineVolume = 1.5;
@@ -132,12 +134,14 @@ public class Car extends Transport {
 
     @Override
     public String toString() {
-        return "Brand: " + getBrand() + ", " + "Model: " + getModel() + ", " + "Year of production: " + getProductionYear() + ", " +
-                "Assembled in: " + getProductionCountry() + ", " + "Body color: " + getBodyColor() + ", " +
-                "Maximum speed: " + getMaximumSpeed() + " km/h" + ", " + String.format("Engine volume - %.1f l." , engineVolume) +
-                "Gearbox: " + gearbox + ", " + "Body type: " + bodyType + ", " + "Registration plate number: " +
-                registrationPlateNumber + ", " + "Seat quantity: " + seatQuantity + ", " + (isWinterTyres() ? "winter" : "summer") +
-                " tyres" + ", " + (getKey().isKeylessAccess() ? "keyless access" : "access with a key") + ", " +
+        return "Brand: " + getBrand() + ", " + "Model: " + getModel() + ", " + "Year of production: " +
+                getProductionYear() + ", " + "Assembled in: " + getProductionCountry() + ", " + "Body color: "
+                + getBodyColor() + ", " + "Maximum speed: " + getMaximumSpeed() + " km/h" + ", " +
+                String.format("Engine volume - %.1f l." , engineVolume) + "Gearbox: " + gearbox + ", " +
+                "Body type: " + bodyType + ", " + "Registration plate number: " +
+                registrationPlateNumber + ", " + "Seat quantity: " + seatQuantity + ", " +
+                (isWinterTyres() ? "winter" : "summer") + " tyres" + ", " +
+                (getKey().isKeylessAccess() ? "keyless access" : "access with a key") + ", " +
                 (getKey().isRemoteStartEngine() ? "remote start engine" : "classic start engine");
     }
 

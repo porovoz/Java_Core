@@ -12,7 +12,7 @@ public class Main {
 
 //        Task 1
 
-        Car ladaGranta =new Car("Lada", "Granta", 2015, "Russia",
+        Car ladaGranta = new Car("Lada", "Granta", 2015, "Russia",
                 "yellow", 180, 1.7, "M", "sedan",
                 "в217тр023", 5, true, new Car.Key());
         Car audiA8 = new Car("Audi", "A8 50L TDI quattro", 2020, "Germany",

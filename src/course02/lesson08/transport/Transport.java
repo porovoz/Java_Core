@@ -186,7 +186,7 @@ public abstract class Transport {
             try {
                 transport.passDiagnostics();
             } catch (UnsupportedOperationException e) {
-                System.out.println("An error occurred");
+                System.out.println("An exception occurred");
                 System.out.println(e.getMessage());
             }
         }

@@ -1,8 +1,5 @@
 package course02.lesson04.driver;
 
-import course02.lesson04.transport.Competitor;
-import course02.lesson04.transport.Transport;
-
 import java.util.Objects;
 
 public abstract class Driver {
@@ -67,7 +64,8 @@ public abstract class Driver {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Driver driver = (Driver) o;
-        return driversLicence == driver.driversLicence && drivingExperience == driver.drivingExperience && Objects.equals(fullName, driver.fullName);
+        return driversLicence == driver.driversLicence && drivingExperience == driver.drivingExperience &&
+                Objects.equals(fullName, driver.fullName);
     }
 
     @Override

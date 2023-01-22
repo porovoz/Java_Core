@@ -1,9 +1,6 @@
 package course02.lesson07;
 
-import course02.lesson07.driver.Driver;
-import course02.lesson07.driver.DriverB;
-import course02.lesson07.driver.DriverC;
-import course02.lesson07.driver.DriverD;
+import course02.lesson07.driver.*;
 import course02.lesson07.mechanic.Mechanic;
 import course02.lesson07.mechanic.ProfessionalSkills;
 import course02.lesson07.transport.*;
@@ -13,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DriversLicenceException {
 
         ArrayList<Driver> drivers = new ArrayList<>();
         DriverB<Car> andrej = new DriverB<>("Andrej Alekseevich Mihailov", true, 11,
@@ -175,6 +172,19 @@ public class Main {
         sergej.drive(dafX2);
         Transport.performDiagnostics(bmwZ4, audiR8, porsche911, mitsubishiLancerEvolution, neoplanN5218,
                 mercedesBenzTravego, scaniaTouring, ikarus386, kamaz4326, ivecoStralis, hino500, dafX2);
+        System.out.println();
+        try {
+            andrej.setCategory("B");
+        } catch (DriversLicenceException e) {
+            System.out.println("An exception occurred");
+            System.out.println(e.getMessage());
+        }
+        try {
+            andrej.setCategory("A");
+        } catch (DriversLicenceException e) {
+            System.out.println("An exception occurred");
+            System.out.println(e.getMessage());
+        }
         System.out.println("------------------------------------------------------------------");
 
         bmwZ4.fixTheVehicle();

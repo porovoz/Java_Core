@@ -1,11 +1,11 @@
 package course02.lesson04;
 
-import course02.lesson04.driver.Driver;
 import course02.lesson04.driver.DriverB;
 import course02.lesson04.driver.DriverC;
 import course02.lesson04.driver.DriverD;
 import course02.lesson04.transport.Bus;
 import course02.lesson04.transport.Car;
+import course02.lesson04.transport.Transport;
 import course02.lesson04.transport.Truck;
 
 public class Main {
@@ -66,7 +66,8 @@ public class Main {
         ilja.drive(neoplanN5218);
         DriverB<Car> andrej = new DriverB<>("Andrej Alekseevich Mihailov", true, 11);
         andrej.drive(audiR8);
-        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true, 10);
+        DriverC<Truck> sergej = new DriverC<>("Sergej Aleksandrovich Skvortcov", true,
+                10);
         sergej.drive(dafX2);
     }
 }

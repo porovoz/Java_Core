@@ -1,5 +1,7 @@
 package course02.lesson09.driver;
 
+import course02.lesson06.driver.DriversLicenceException;
+
 import java.util.Objects;
 
 public abstract class Driver {
@@ -8,7 +10,7 @@ public abstract class Driver {
     private int drivingExperience;
     private String category;
 
-    public Driver(String fullName, boolean driversLicence, int drivingExperience, String category) {
+    public Driver(String fullName, boolean driversLicence, int drivingExperience, String category) throws DriversLicenceException {
         if (fullName == null || fullName.isEmpty()) {
             this.fullName = "Ivanov Ivan Ivanovich";
         } else {
@@ -59,23 +61,15 @@ public abstract class Driver {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(String category) throws DriversLicenceException {
         if (category == null || category.isEmpty()) {
-            try {
-                throw new DriversLicenceException("Driver's licence category have to be specified" +
-                        " for the driver " + getFullName());
-            } catch (DriversLicenceException e) {
-                System.out.println(e.getMessage());
-            }
+            throw new DriversLicenceException("Driver's licence category have to be specified" +
+                    " for the driver " + getFullName());
         } else if (category.equals("B") || category.equals("C") || category.equals("D")) {
             this.category = category;
         } else {
-            try {
-                throw new DriversLicenceException("Driver's licence category have to be specified" +
-                        " for the driver " + getFullName());
-            } catch (DriversLicenceException e) {
-                System.out.println(e.getMessage());
-            }
+            throw new DriversLicenceException("Driver's licence category have to be specified" +
+                    " for the driver " + getFullName());
         }
     }
 
