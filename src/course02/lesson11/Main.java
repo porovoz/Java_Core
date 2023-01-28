@@ -47,10 +47,16 @@ public class Main {
         minMaxConsumer.accept(min, max);
     }
 
+//        public static void countEvenNumbers(List<Integer> list) {
+//        List<Integer> countEvenNumbersList = list.stream()
+//                .filter(x -> x % 2 == 0)
+//                .collect(Collectors.toList());
+//        System.out.println("Even number quantity: " + countEvenNumbersList.size());
+//    }
+
     public static void countEvenNumbers(List<Integer> list) {
-        List<Integer> countEvenNumbersList = list.stream()
+        System.out.println("Even number quantity: " + list.stream()
                 .filter(x -> x % 2 == 0)
-                .collect(Collectors.toList());
-        System.out.println("Even number quantity: " + countEvenNumbersList.size());
+                .count());
     }
 }
